@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     var originalText = document.querySelector("#origin-text p").innerHTML;
-    
+    document.querySelector("#origin-text p").style.cur
     let req = new XMLHttpRequest();
     var content;
 
@@ -85,10 +85,18 @@ $(document).ready(function() {
             clearInterval(interval);
             stopKeyboard();
             testWrapper.style.borderColor = "#429890";
+
+            document.querySelector("#origin-text p").innerHTML ="";
         } else {
             if (textEntered == originTextMatch) {
                 testWrapper.style.borderColor = "#65CCf3";
-    
+                
+                let text1 = originalText.substring(0,textEntered.length).fontcolor("white");
+               
+                let text2 = originalText.substring(textEntered.length,originalText.length);
+
+                document.querySelector("#origin-text p").innerHTML =text1 + text2;
+
                 textCount = originTextMatch.split(" ").length;
                 testSpeed(textCount,timer[0]);
             } else {
